@@ -8,12 +8,17 @@
 
 :root {
     /* colors */
-    --color-alpha-light: MEDIUMSLATEBLUE;
-    --color-alpha: SLATEBLUE;
+    --color-alpha-x-light: #a3b8ff;
+    --color-alpha-light: #A3A0FB;
+    --color-alpha: #3b86ff;
 
-    --color-neutral-light: LIGHTSLATEGRAY;
-    --color-neutral: SLATEGRAY;
-    --color-neutral-dark: DARKSLATEGRAY;
+    --color-neutral-x-light: #ffffff;
+    --color-neutral-light: #F0F0F7;
+    --color-neutral: #43425D;
+    --color-neutral-dark: #43425D;
+    --color-neutral-xx-dark: #000000;
+
+    --color-beta: #FF6565;
 
     /* Shadows */
 
@@ -21,6 +26,14 @@
 
     /* transitions */
     --transition-alpha: .1s;
+
+    /* Whitespace */
+    --baseline: 5px;
+    --whitespace-xs: calc( var(--baseline) * 2 );
+    --whitespace-sm: calc( var(--baseline) * 3 );
+    --whitespace-md: calc( var(--baseline) * 4 );
+    --whitespace-lg: calc( var(--baseline) * 5 );
+    --whitespace-xl: calc( var(--baseline) * 6 );
 }
 
 /*------------------------------------*\
@@ -34,9 +47,9 @@
 */
 
 html {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     color: var(--color-neutral-dark);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -294,7 +307,119 @@ input::placeholder {
     ---
     Website main logo
 */
+.c-app {
+    height: 100vh;
+}
+@media only screen and (min-width: 764px) {
+    .c-app {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 260px 1fr;
+    }
+}
+.c-app__logo {
+    background-color: var(--color-neutral-xx-dark);
+    z-index: 2;
+    padding: 25px;
+    display: block;
+}
+ 
+.c-app__topbar {
+    background-color: var(--color-neutral-x-light);
+    /* box-shadow => http://css3generator.com/ */
+    -webkit-box-shadow: 0 6px 2px 1px #EDEDED;
+    box-shadow: 0 6px 5px 2px #EDEDED;
+    z-index: 1 ;
+}
 
+.c-app__sidebar {
+    background-color: var(--color-neutral-dark);
+    z-index: 1 ;
+}
+
+.c-app__main {
+    background-color: var(--color-neutral-light);
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.c-logo{
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.c-main-nav{
+    overflow-y: auto;
+}
+.c-main-nav ul{ 
+    padding: 0;
+}
+.c-main-nav li{ 
+    padding: 15px;
+    line-height: 20px;
+    transition: 0.5s;
+}
+.c-main-nav li:hover{ 
+    border-left: 3px solid var(--color-alpha-light);
+    background-color: var(--color-neutral-xx-dark);
+}
+.c-main-nav li:hover .c-main-nav__icon{ 
+    fill: var(--color-alpha-light);
+} 
+.c-main-nav a:active .c-main-nav li{
+    border-left: 3px solid var(--color-alpha-light);
+    background-color: var(--color-neutral-xx-dark);
+}
+.c-main-nav a:active .c-main-nav__icon{
+    fill: var(--color-alpha-light);
+}
+.c-main-nav a{ 
+    text-decoration: none;
+    color: white;
+}
+.c-main-nav svg{ 
+    fill: #A5A4BF;
+    height: 16px;
+}
+/* Dashboard */
+.c-dashboard{
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 30px;
+}
+.c-dashboard__item{
+    padding: 20px;
+    background-color: var(--color-neutral-x-light);
+}
+.c-dashboard__item:nth-child(1) {
+    grid-column: span 12
+  }
+  .c-dashboard__item:nth-child(2) {
+    grid-column: span 6
+  }
+  .c-dashboard__item:nth-child(3) {
+    grid-column: span 6
+  }
+  .c-dashboard__item:nth-child(4) {
+    grid-area: 3 / 1 / 10 / 5;
+  }
+  .c-dashboard__item:nth-child(5) {
+    grid-area: 3 / 5 / 5 / 13;  /*grid-row-start + grid-column-start + grid-row-end + grid-column-end */
+  }
+  .c-dashboard__item:nth-child(6) {
+    grid-area: 5 / 5 / 10 / 9;
+  }
+  .c-dashboard__item:nth-child(7) {
+    grid-area: 5 / 9 / 10 / 13;
+  }
+  .c-dashboard__item:nth-child(8) {
+    grid-column: span 4;
+  }
+  .c-dashboard__item:nth-child(9) {
+      grid-column: span 8;
+  }
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
