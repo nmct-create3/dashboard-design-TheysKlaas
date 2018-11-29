@@ -310,10 +310,10 @@ input::placeholder {
 .c-app {
     height: 100vh;
 }
-@media only screen and (min-width: 764px) {
+@media only screen and (min-width: 920px) {
     .c-app {
         display: grid;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: 70px 1fr;
         grid-template-columns: 260px 1fr;
     }
 }
@@ -325,16 +325,21 @@ input::placeholder {
 }
  
 .c-app__topbar {
-    background-color: var(--color-neutral-x-light);
-    /* box-shadow => http://css3generator.com/ */
-    -webkit-box-shadow: 0 6px 2px 1px #EDEDED;
-    box-shadow: 0 6px 5px 2px #EDEDED;
-    z-index: 1 ;
+    background-color: var(--color-neutral-xxx-light);
+    grid-column: 2;
+    grid-row: 1;
+    box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    display: flex;
+    align-items: center;
 }
-
+.c-app__topbar input{
+    all: unset;
+}
 .c-app__sidebar {
     background-color: var(--color-neutral-dark);
-    z-index: 1 ;
+    z-index: 1;
+    overflow-y: auto;
 }
 
 .c-app__main {
@@ -349,39 +354,47 @@ input::placeholder {
     letter-spacing: 2px;
     margin: 0;
 }
-.c-main-nav{
-    overflow-y: auto;
-}
 .c-main-nav ul{ 
     padding: 0;
 }
 .c-main-nav li{ 
-    padding: 15px;
-    line-height: 20px;
-    transition: 0.5s;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    transition: all 1s;
 }
+.c-main-nav svg{ 
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    fill: #A5A4BF;
+    margin-left: 15px;
+    transition: all 1s;
+}
+
 .c-main-nav li:hover{ 
     border-left: 3px solid var(--color-alpha-light);
     background-color: var(--color-neutral-xx-dark);
+    transition: all 0.1s;
 }
 .c-main-nav li:hover .c-main-nav__icon{ 
     fill: var(--color-alpha-light);
+    transition: all 0.1s
 } 
-.c-main-nav a:active .c-main-nav li{
-    border-left: 3px solid var(--color-alpha-light);
-    background-color: var(--color-neutral-xx-dark);
-}
-.c-main-nav a:active .c-main-nav__icon{
-    fill: var(--color-alpha-light);
-}
 .c-main-nav a{ 
     text-decoration: none;
     color: white;
+    line-height: 20px;
 }
-.c-main-nav svg{ 
-    fill: #A5A4BF;
-    height: 16px;
+.is-selected{
+    border-left: 3px solid var(--color-alpha-light);
+    background-color: var(--color-neutral-xx-dark);
 }
+.is-selected .c-main-nav__icon{
+    fill: var(--color-alpha-light);
+}
+
 /* Dashboard */
 .c-dashboard{
     display: grid;
@@ -392,9 +405,10 @@ input::placeholder {
 .c-dashboard__item{
     padding: 20px;
     background-color: var(--color-neutral-x-light);
+    grid-column: span 12
 }
 .c-dashboard__item:nth-child(1) {
-    grid-column: span 12
+    
   }
   .c-dashboard__item:nth-child(2) {
     grid-column: span 6
@@ -420,6 +434,55 @@ input::placeholder {
   .c-dashboard__item:nth-child(9) {
       grid-column: span 8;
   }
+
+.c-app__topbar-search {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.c-app__topbar-search svg {
+    margin: 0 15px ;
+    width: 15px;
+    height: 15px;
+    fill: #A5A4BF;
+}
+
+.c-app__topbar-nav {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.c-app__topbar-nav svg {
+    margin: 0 15px ;
+    width: 15px;
+    height: 15px;
+    fill: #A5A4BF;
+}
+
+
+.c-app__topbar-dropdown {
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+}
+
+.c-app__topbar-dropdown svg {
+    margin: 0 15px ;
+    width: 15px;
+    height: 15px;
+    fill: #A5A4BF;
+}
+.c-app__topbar-dropdown img{
+    border-radius: 100%;
+    width: 50px;
+}
+.c-app__topbar-spacer {
+    border-left: 2px solid #A5A4BF;
+    height: 30px;
+    margin: auto 0px;
+}
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
